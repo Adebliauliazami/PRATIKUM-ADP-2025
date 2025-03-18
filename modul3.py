@@ -3,7 +3,7 @@ r = float(input("Masukkan Suku bunga tahunan (%) : "))
 T = float(input("Masukkan target investasi : "))
 
 tahun = 0
-while M < T:
+while M <= T:
     M += M * (r / 100)
     tahun += 1
     print(f"Tahun ke-{tahun}: Rp{M}")
