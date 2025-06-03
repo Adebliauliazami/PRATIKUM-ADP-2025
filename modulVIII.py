@@ -1,5 +1,4 @@
-# === 1. Buat file OrPSB22.txt dengan data awal ===
-data = """\
+data = """
 Budi,123456,IF-45,ketua acara;anggota danus,85,Acara
 Siti,789012,IF-45,anggota acara;anggota pubdok,90,Pubdok
 Andi,345678,IF-45,ketua pubdok;anggota acara,88,Pubdok
@@ -13,7 +12,6 @@ Citra,876543,IF-45,anggota pubdok;anggota acara,84,Pubdok
 with open("OrPSB22.txt", "w") as file:
     file.write(data)
 
-# === 2. Fungsi untuk membaca file dan ubah ke struktur data ===
 def baca_file(nama_file):
     data = []
     with open(nama_file, 'r') as file:
@@ -30,7 +28,6 @@ def baca_file(nama_file):
             })
     return data
 
-# === 3. Fungsi hitung nilai seleksi (wawancara + pengalaman) ===
 def hitung_nilai(cakoor):
     tambahan = 0
     for pengalaman_item in cakoor['pengalaman']:
@@ -41,7 +38,6 @@ def hitung_nilai(cakoor):
             break
     return cakoor['nilai_wawancara'] + tambahan
 
-# === 4. Seleksi 2 terbaik tiap bidang ===
 def seleksi_koordinator(data):
     bidang_dict = {}
     for orang in data:
@@ -57,7 +53,6 @@ def seleksi_koordinator(data):
         hasil[bidang] = peserta[:2]
     return hasil
 
-# === 5. Jalankan dan simpan ke hasil_seleksi.txt ===
 data_cakoor = baca_file("OrPSB22.txt")
 hasil_koor = seleksi_koordinator(data_cakoor)
 
@@ -69,6 +64,5 @@ with open("hasil_seleksi.txt", "w") as hasil:
             hasil.write(f"  {i}. {nama} (Nilai: {nilai})\n")
         hasil.write("\n")
 
-# === 6. Tampilkan isi hasil seleksi ke layar ===
 with open("hasil_seleksi.txt", "r") as hasil:
     print(hasil.read())
